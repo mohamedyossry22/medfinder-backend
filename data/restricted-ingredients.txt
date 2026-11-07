@@ -1,0 +1,23 @@
+# مواد فعالة تُستبعد من البحث (مخدرات / مؤثرات عقلية / مقيّدة)
+# قائمة مبدئية فقط — لازم تتراجع وتتكمل من جداول هيئة الدواء المصرية قبل الإطلاق
+# سطر لكل مادة، بالإنجليزي، والمطابقة بالاحتواء (contains)
+TRAMADOL
+MORPHINE
+CODEINE
+FENTANYL
+PETHIDINE
+METHADONE
+OXYCODONE
+TAPENTADOL
+BUPRENORPHINE
+ALPRAZOLAM
+CLONAZEPAM
+BROMAZEPAM
+LORAZEPAM
+DIAZEPAM
+MIDAZOLAM
+ZOLPIDEM
+PHENOBARBITAL
+METHYLPHENIDATE
+AMPHETAMINE
+PREGABALIN

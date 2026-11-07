@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "CdGuKMuj/vO3k3PieYOiRmy0ba6ut0cgFmEqWdLI854=",
+  "Source": "MedFinder",
+  "BasePath": "_content/MedFinder",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MedFinder\\wwwroot",
+      "Source": "MedFinder",
+      "ContentRoot": "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\wwwroot\\",
+      "BasePath": "_content/MedFinder",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
