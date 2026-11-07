@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CdGuKMuj/vO3k3PieYOiRmy0ba6ut0cgFmEqWdLI854=",
+  "Hash": "h6Hla5Kd2vKhdGxrOod2LqOATaP4IG6J19Y1DsdvRoY=",
   "Source": "MedFinder",
   "BasePath": "_content/MedFinder",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "MedFinder\\wwwroot",
       "Source": "MedFinder",
-      "ContentRoot": "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\wwwroot\\",
+      "ContentRoot": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\wwwroot\\",
       "BasePath": "_content/MedFinder",
       "Pattern": "**"
     }

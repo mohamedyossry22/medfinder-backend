@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5+xZ3hHADSo=",
+  "dgSpecHash": "9we4Rzhp1Dw=",
   "success": true,
-  "projectFilePath": "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\MedFinder.csproj",
+  "projectFilePath": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\MedFinder.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\youxel\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\youxel\\.nuget\\packages\\firebaseadmin\\3.7.0\\firebaseadmin.3.7.0.nupkg.sha512",

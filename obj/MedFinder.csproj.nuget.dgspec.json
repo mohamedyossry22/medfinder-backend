@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\MedFinder.csproj": {}
+    "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\MedFinder.csproj": {}
   },
   "projects": {
-    "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\MedFinder.csproj": {
+    "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\MedFinder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\MedFinder.csproj",
+        "projectUniqueName": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\MedFinder.csproj",
         "projectName": "MedFinder",
-        "projectPath": "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\MedFinder.csproj",
+        "projectPath": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\MedFinder.csproj",
         "packagesPath": "C:\\Users\\youxel\\.nuget\\packages\\",
-        "outputPath": "D:\\Yossry\\تطبيق الصيدلية الجديد\\medfinder\\obj\\",
+        "outputPath": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\youxel\\AppData\\Roaming\\NuGet\\NuGet.Config"
