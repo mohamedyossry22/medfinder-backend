@@ -3936,19 +3936,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\youxel\\.nuget\\packages\\": {}
+    "C:\\Users\\moham\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\MedFinder.csproj",
+      "projectUniqueName": "E:\\Yossry\\pharma-app\\medfinder-backend\\MedFinder.csproj",
       "projectName": "MedFinder",
-      "projectPath": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\MedFinder.csproj",
-      "packagesPath": "C:\\Users\\youxel\\.nuget\\packages\\",
-      "outputPath": "d:\\Yossry\\تطبيق الصيدلية الجديد\\github\\medfinder-backend\\obj\\",
+      "projectPath": "E:\\Yossry\\pharma-app\\medfinder-backend\\MedFinder.csproj",
+      "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
+      "outputPath": "E:\\Yossry\\pharma-app\\medfinder-backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\youxel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -19,7 +20,21 @@ public class DrugImporter(AppDbContext db, MeilisearchClient meili, ILogger<Drug
         [property: JsonPropertyName("manufacturer")] string? Manufacturer,
         [property: JsonPropertyName("drug_class")] string? DrugClass,
         [property: JsonPropertyName("route")] string? Route,
-        [property: JsonPropertyName("price_egp")] decimal? Price);
+        [property: JsonPropertyName("price_egp")] JsonElement? Price);
+
+    private static decimal? ParsePrice(JsonElement? e)
+    {
+        if (e is not JsonElement v) return null;
+        switch (v.ValueKind)
+        {
+            case JsonValueKind.Number:
+                return v.TryGetDecimal(out var d) ? (decimal?)d : null;
+            case JsonValueKind.String:
+                return decimal.TryParse(v.GetString(), NumberStyles.Any, CultureInfo.InvariantCulture, out var x) ? (decimal?)x : null;
+            default:
+                return null;   // "—" أو null أو غيره
+        }
+    }
 
     /// ID ثابت: نفس الدواء = نفس الـ ID في كل مرة نستورد فيها (مهم للطلبات والباركودات).
     private static Guid StableId(string key) =>
@@ -27,9 +42,14 @@ public class DrugImporter(AppDbContext db, MeilisearchClient meili, ILogger<Drug
 
     public async Task<ImportResult> ImportAsync(string jsonPath, string restrictedPath, CancellationToken ct = default)
     {
-        var raw = JsonSerializer.Deserialize<List<RawDrug>>(
-            await File.ReadAllTextAsync(jsonPath, ct),
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+        // الملف ممكن يكون array مباشرة أو object جواه array
+        using var doc = JsonDocument.Parse(await File.ReadAllTextAsync(jsonPath, ct));
+        var root = doc.RootElement;
+        if (root.ValueKind == JsonValueKind.Object)
+            root = root.EnumerateObject().FirstOrDefault(p => p.Value.ValueKind == JsonValueKind.Array).Value;
+        if (root.ValueKind != JsonValueKind.Array)
+            throw new InvalidOperationException("صيغة ملف الأدوية غير متوقعة: مفيش array أدوية");
+        var raw = root.Deserialize<List<RawDrug>>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
             ?? throw new InvalidOperationException("ملف الأدوية فاضي أو غير صالح");
 
         var restricted = (await File.ReadAllLinesAsync(restrictedPath, ct))
@@ -70,7 +90,7 @@ public class DrugImporter(AppDbContext db, MeilisearchClient meili, ILogger<Drug
             drug.Manufacturer = r.Manufacturer?.Trim();
             drug.DrugClass = r.DrugClass?.Trim();
             drug.Route = r.Route?.Trim();
-            drug.Price = r.Price;
+            drug.Price = ParsePrice(r.Price);
             drug.IsSearchable = !isRestricted;
             drug.UpdatedAt = DateTime.UtcNow;
 

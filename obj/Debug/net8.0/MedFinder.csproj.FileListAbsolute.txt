@@ -1,309 +1,156 @@
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\appsettings.json
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\data\arabic-synonyms.json
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\MedFinder.exe
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\MedFinder.deps.json
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\MedFinder.runtimeconfig.json
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\MedFinder.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\MedFinder.pdb
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Dapper.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\FirebaseAdmin.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Google.Api.Gax.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Google.Apis.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Google.Apis.Auth.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Google.Apis.Core.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Hangfire.AspNetCore.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Hangfire.Core.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Hangfire.NetCore.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Hangfire.PostgreSql.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Humanizer.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Meilisearch.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Microsoft.OpenApi.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Mono.TextTemplating.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Newtonsoft.Json.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Npgsql.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.CodeDom.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.Composition.Convention.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.Composition.Hosting.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.Composition.Runtime.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.Composition.TypedParts.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\System.Management.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ca\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\de\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\es\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\fa\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\fr\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\nb\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\nl\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pt-BR\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pt-PT\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pt\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ru\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\sv\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\tr-TR\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-TW\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh\Hangfire.Core.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.csproj.AssemblyReference.cache
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.GeneratedMSBuildEditorConfig.editorconfig
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.AssemblyInfoInputs.cache
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.AssemblyInfo.cs
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.csproj.CoreCompileInputs.cache
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.MvcApplicationPartsAssemblyInfo.cs
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.MvcApplicationPartsAssemblyInfo.cache
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\staticwebassets.build.json
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\staticwebassets.development.json
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\staticwebassets\msbuild.MedFinder.Microsoft.AspNetCore.StaticWebAssets.props
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\staticwebassets\msbuild.build.MedFinder.props
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MedFinder.props
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MedFinder.props
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\scopedcss\bundle\MedFinder.styles.css
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.csproj.Up2Date
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\refint\MedFinder.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.pdb
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\MedFinder.genruntimeconfig.cache
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\obj\Debug\net8.0\ref\MedFinder.dll
-D:\Yossry\تطبيق الصيدلية الجديد\medfinder\bin\Debug\net8.0\MedFinder.staticwebassets.runtime.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\appsettings.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\data\arabic-synonyms.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\MedFinder.staticwebassets.runtime.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\MedFinder.exe
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\MedFinder.deps.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\MedFinder.runtimeconfig.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\MedFinder.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\MedFinder.pdb
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Dapper.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\FirebaseAdmin.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Google.Api.Gax.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Google.Apis.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Google.Apis.Auth.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Google.Apis.Core.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Hangfire.AspNetCore.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Hangfire.Core.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Hangfire.NetCore.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Hangfire.PostgreSql.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Humanizer.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Meilisearch.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Microsoft.OpenApi.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Mono.TextTemplating.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Newtonsoft.Json.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Npgsql.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.CodeDom.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.Composition.Convention.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.Composition.Hosting.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.Composition.Runtime.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.Composition.TypedParts.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\System.Management.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ca\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\de\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\es\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\fa\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\fr\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\nb\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\nl\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pt-BR\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pt-PT\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pt\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ru\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\sv\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\tr-TR\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-TW\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh\Hangfire.Core.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.csproj.AssemblyReference.cache
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.GeneratedMSBuildEditorConfig.editorconfig
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.AssemblyInfoInputs.cache
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.AssemblyInfo.cs
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.csproj.CoreCompileInputs.cache
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.MvcApplicationPartsAssemblyInfo.cs
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.MvcApplicationPartsAssemblyInfo.cache
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.sourcelink.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\staticwebassets.build.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\staticwebassets.development.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.MedFinder.Microsoft.AspNetCore.StaticWebAssets.props
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.build.MedFinder.props
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MedFinder.props
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MedFinder.props
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\staticwebassets.pack.json
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\scopedcss\bundle\MedFinder.styles.css
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.csproj.Up2Date
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\refint\MedFinder.dll
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.pdb
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\MedFinder.genruntimeconfig.cache
-d:\Yossry\تطبيق الصيدلية الجديد\github\medfinder-backend\obj\Debug\net8.0\ref\MedFinder.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\appsettings.json
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\data\arabic-synonyms.json
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\MedFinder.staticwebassets.runtime.json
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\MedFinder.exe
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\MedFinder.deps.json
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\MedFinder.runtimeconfig.json
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\MedFinder.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\MedFinder.pdb
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Dapper.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\FirebaseAdmin.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Google.Api.Gax.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Google.Apis.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Google.Apis.Auth.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Google.Apis.Core.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Hangfire.AspNetCore.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Hangfire.Core.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Hangfire.NetCore.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Hangfire.PostgreSql.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Humanizer.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Meilisearch.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Newtonsoft.Json.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Npgsql.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.CodeDom.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\System.Management.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ca\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\de\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\es\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\fa\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\fr\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\nb\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\nl\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pt-BR\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pt-PT\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pt\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ru\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\sv\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\tr-TR\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-TW\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh\Hangfire.Core.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.csproj.AssemblyReference.cache
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.GeneratedMSBuildEditorConfig.editorconfig
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.AssemblyInfoInputs.cache
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.AssemblyInfo.cs
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.csproj.CoreCompileInputs.cache
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.MvcApplicationPartsAssemblyInfo.cs
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.MvcApplicationPartsAssemblyInfo.cache
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.sourcelink.json
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\staticwebassets.build.json
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\staticwebassets.development.json
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.MedFinder.Microsoft.AspNetCore.StaticWebAssets.props
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.build.MedFinder.props
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MedFinder.props
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MedFinder.props
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\staticwebassets.pack.json
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\scopedcss\bundle\MedFinder.styles.css
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.csproj.Up2Date
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.dll
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\refint\MedFinder.dll
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.pdb
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\MedFinder.genruntimeconfig.cache
+E:\Yossry\pharma-app\medfinder-backend\obj\Debug\net8.0\ref\MedFinder.dll
+E:\Yossry\pharma-app\medfinder-backend\bin\Debug\net8.0\data\egyptian-drugs.json

@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"));
 
@@ -103,7 +104,18 @@ builder.Services.AddScoped<ExpiryJob>();
 builder.Services.AddScoped<DrugImporter>();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(o =>
+{
+    o.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http, Scheme = "bearer", BearerFormat = "JWT",
+        Description = "الصق التوكن فقط (من /api/auth/login) بدون كلمة Bearer"
+    });
+    o.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        { new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } }, Array.Empty<string>() }
+    });
+});
 
 var app = builder.Build();
 
@@ -129,10 +141,36 @@ using (var scope = app.Services.CreateScope())
 
     await MeiliSetup.ConfigureAsync(sp.GetRequiredService<MeilisearchClient>(),
         Path.Combine(app.Environment.ContentRootPath, "data", "arabic-synonyms.json"));
+
+    // أول تشغيل والداتابيز فاضية: استورد الأدوية أوتوماتيك لو الملف موجود (ممكن ياخد دقيقة)
+    var drugsDb = sp.GetRequiredService<AppDbContext>();
+    if (!await drugsDb.Drugs.AnyAsync())
+    {
+        var dataDir = Path.Combine(app.Environment.ContentRootPath, "data");
+        var drugsFile = Path.Combine(dataDir, "egyptian-drugs.json");
+        if (File.Exists(drugsFile))
+        {
+            try
+            {
+                app.Logger.LogInformation("Importing drugs from {File} ...", drugsFile);
+                var res = await sp.GetRequiredService<DrugImporter>()
+                    .ImportAsync(drugsFile, Path.Combine(dataDir, "restricted-ingredients.txt"));
+                app.Logger.LogInformation("Drugs imported: {@Result}", res);
+            }
+            catch (Exception ex) { app.Logger.LogError(ex, "Auto-import of drugs failed"); }
+        }
+        else app.Logger.LogWarning("data/egyptian-drugs.json مش موجود: مفيش استيراد تلقائي");
+    }
 }
 
-RecurringJob.AddOrUpdate<ExpiryJob>("expire-requests", j => j.RunAsync(), "*/5 * * * *");
+var recurringJobManager =
+    app.Services.GetRequiredService<IRecurringJobManager>();
 
+recurringJobManager.AddOrUpdate<ExpiryJob>(
+    "expire-requests",
+    j => j.RunAsync(),
+    "*/5 * * * *"
+);
 // ── Pipeline ──
 app.UseSwagger();
 app.UseSwaggerUI();
