@@ -3941,11 +3941,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Yossry\\pharma-app\\medfinder-backend\\MedFinder.csproj",
+      "projectUniqueName": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\MedFinder.csproj",
       "projectName": "MedFinder",
-      "projectPath": "E:\\Yossry\\pharma-app\\medfinder-backend\\MedFinder.csproj",
+      "projectPath": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\MedFinder.csproj",
       "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-      "outputPath": "E:\\Yossry\\pharma-app\\medfinder-backend\\obj\\",
+      "outputPath": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config"

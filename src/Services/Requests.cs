@@ -49,6 +49,7 @@ public class RequestService(AppDbContext db, Notifier notifier, ILogger<RequestS
         var req = await db.DrugRequests.Include(r => r.Drug).Include(r => r.Targets)
             .FirstOrDefaultAsync(r => r.Id == requestId && r.UserId == userId);
         if (req == null) return ("not_found", 0);
+        if (req.ClosedAt != null) return ("closed", 0);
         if (req.ExpiresAt <= DateTime.UtcNow) return ("expired", 0);
         if (newRadius <= req.RadiusKm || newRadius > MaxRadiusKm) return ("invalid_radius", 0);
 
@@ -59,6 +60,46 @@ public class RequestService(AppDbContext db, Notifier notifier, ILogger<RequestS
         await db.SaveChangesAsync();
         await NotifyAsync(req, req.Drug, targets);
         return (null, targets.Count);
+    }
+
+    /// الحالة العامة للطلب من حالات الصيدليات
+    public static string Overall(IReadOnlyCollection<TargetStatus> st, bool closed, bool expired)
+    {
+        if (closed || st.Contains(TargetStatus.Delivered)) return "Delivered";
+        if (expired) return "Expired";
+        if (st.Contains(TargetStatus.Available)) return "Available";
+        if (st.Contains(TargetStatus.Partial)) return "Partial";
+        if (st.Count > 0 && st.All(s => s == TargetStatus.Unavailable)) return "Unavailable";
+        return "Pending";
+    }
+
+    /// المستخدم بيأكد إنه استلم الدواء: الطلب بيتقفل وبيتلغي عند باقي الصيدليات
+    public async Task<string?> ConfirmDeliveryAsync(Guid userId, Guid requestId)
+    {
+        var req = await db.DrugRequests.Include(r => r.Targets).ThenInclude(t => t.Pharmacy)
+            .FirstOrDefaultAsync(r => r.Id == requestId && r.UserId == userId);
+        if (req == null) return "not_found";
+        if (req.ClosedAt != null) return "already_closed";
+
+        var delivered = req.Targets.Where(t => t.Status == TargetStatus.Delivered)
+            .OrderByDescending(t => t.DeliveredAt).FirstOrDefault();
+        if (delivered == null) return "not_delivered";
+
+        req.ClosedAt = DateTime.UtcNow;
+        req.DeliveredTargetId = delivered.Id;
+
+        var affected = new List<Guid>();
+        foreach (var t in req.Targets.Where(t => t.Id != delivered.Id &&
+                     (t.Status == TargetStatus.Pending || t.Status == TargetStatus.Available || t.Status == TargetStatus.Partial)))
+        {
+            t.Status = TargetStatus.Cancelled;
+            affected.Add(t.PharmacyId);
+        }
+        await db.SaveChangesAsync();
+
+        try { await notifier.RequestClosedAsync(req.Id, affected); }
+        catch (Exception ex) { log.LogWarning(ex, "notify closed failed"); }
+        return null;
     }
 
     private async Task<List<(RequestTarget Target, Pharmacy Pharmacy)>> FindTargetsAsync(

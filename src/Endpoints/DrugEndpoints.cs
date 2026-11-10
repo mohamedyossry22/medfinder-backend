@@ -26,6 +26,35 @@ public static class DrugEndpoints
             return Results.Ok(res.Hits);
         });
 
+        // مسح روشتة/علبة بالذكاء الاصطناعي: الصورة ← أسماء مقترحة ← مطابقة مع قاعدة الأدوية (المستخدم بيأكد)
+        g.MapPost("/scan", async (IFormFile image, IVisionExtractor vision, MeilisearchClient meili, CancellationToken ct) =>
+        {
+            if (image == null || image.Length == 0 || image.Length > 4 * 1024 * 1024)
+                return Results.BadRequest(new { error = "حجم الصورة غير مقبول (الحد الأقصى 4 ميجا)" });
+
+            byte[] bytes;
+            using (var ms = new MemoryStream()) { await image.CopyToAsync(ms, ct); bytes = ms.ToArray(); }
+            var mime = ImageSniffer.Detect(bytes);
+            if (mime == null) return Results.BadRequest(new { error = "الملف ليس صورة صالحة" });
+
+            List<ExtractedDrug> extracted;
+            try { extracted = await vision.ExtractAsync(bytes, mime, ct); }
+            catch (VisionUnavailableException) { return Results.Json(new { error = "vision_unavailable" }, statusCode: 503); }
+            catch (VisionFailedException) { return Results.Json(new { error = "vision_failed" }, statusCode: 502); }
+
+            var index = meili.Index(MeiliSetup.IndexName);
+            var items = new List<object>();
+            foreach (var e in extracted)
+            {
+                var res = await index.SearchAsync<DrugDoc>(ArabicNormalizer.Normalize(e.Name), new SearchQuery { Limit = 4 }, cancellationToken: ct);
+                var hits = res.Hits.ToList();
+                var digits = new string((e.Strength ?? "").Where(char.IsDigit).ToArray());
+                if (digits.Length > 0) hits = hits.OrderByDescending(h => h.NameEn.Contains(digits)).ToList();   // نفضّل نفس التركيز
+                items.Add(new { text = e.Name, strength = e.Strength, confidence = e.Confidence, matches = hits });
+            }
+            return Results.Ok(new { items });
+        }).DisableAntiforgery().RequireRateLimiting("scan");
+
         g.MapGet("/barcode/{code}", async (string code, AppDbContext db) =>
         {
             var d = await db.DrugBarcodes

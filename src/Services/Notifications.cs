@@ -62,4 +62,20 @@ public class Notifier(IHubContext<NotificationsHub> hub, PushService push)
                 status == TargetStatus.Available ? $"{pharmacyName}: الدواء متوفر" : $"{pharmacyName}: متوفر جزئيًا",
                 new() { ["type"] = "pharmacy_response", ["requestId"] = requestId.ToString() });
     }
+
+    /// الصيدلية سجّلت تسليم: نطلب من المستخدم يأكد الاستلام
+    public async Task DeliveredAsync(Guid userId, Guid requestId, string pharmacyName)
+    {
+        await hub.Clients.Group($"user:{userId}").SendAsync("RequestUpdated", new { requestId, status = TargetStatus.Delivered });
+        await push.SendToUsersAsync(new[] { userId }, "تم تسليم الدواء؟",
+            $"{pharmacyName} سجّلت تسليم الدواء. أكّد الاستلام من التطبيق.",
+            new() { ["type"] = "delivered", ["requestId"] = requestId.ToString() });
+    }
+
+    /// الطلب اتقفل: الصيدليات اللي لسه ما ردتش تشيله من شاشتها لايف
+    public async Task RequestClosedAsync(Guid requestId, IEnumerable<Guid> pharmacyIds)
+    {
+        foreach (var id in pharmacyIds.Distinct())
+            await hub.Clients.Group($"pharmacy:{id}").SendAsync("RequestClosed", new { requestId });
+    }
 }

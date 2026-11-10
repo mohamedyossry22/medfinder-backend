@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cr9e0HS9E2qcKdfnz00JDEzoJpWEQ0mwXpYtP+0b37E=",
+  "Hash": "6eiINCaz453rWZvtVNsyutBKIcoNXfvq/+v+iDNq7SQ=",
   "Source": "MedFinder",
   "BasePath": "_content/MedFinder",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "MedFinder\\wwwroot",
       "Source": "MedFinder",
-      "ContentRoot": "E:\\Yossry\\pharma-app\\medfinder-backend\\wwwroot\\",
+      "ContentRoot": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\",
       "BasePath": "_content/MedFinder",
       "Pattern": "**"
     }

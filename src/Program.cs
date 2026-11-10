@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
@@ -73,6 +74,11 @@ builder.Services.AddRateLimiter(o =>
     o.AddPolicy("otp", ctx => RateLimitPartition.GetFixedWindowLimiter(
         ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
         _ => new FixedWindowRateLimiterOptions { PermitLimit = 10, Window = TimeSpan.FromMinutes(1) }));
+
+    // مسح الصور بالذكاء الاصطناعي بيتكلف فلوس: 10 مرات في الساعة لكل مستخدم
+    o.AddPolicy("scan", ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ctx.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
+        _ => new FixedWindowRateLimiterOptions { PermitLimit = 10, Window = TimeSpan.FromHours(1) }));
 });
 
 // ── Hangfire ──
@@ -102,6 +108,8 @@ builder.Services.AddScoped<Notifier>();
 builder.Services.AddScoped<RequestService>();
 builder.Services.AddScoped<ExpiryJob>();
 builder.Services.AddScoped<DrugImporter>();
+builder.Services.AddScoped<IVisionExtractor, AnthropicVisionExtractor>();
+builder.Services.AddHttpClient("vision", c => c.Timeout = TimeSpan.FromSeconds(45));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(o =>
@@ -162,10 +170,8 @@ using (var scope = app.Services.CreateScope())
         else app.Logger.LogWarning("data/egyptian-drugs.json مش موجود: مفيش استيراد تلقائي");
     }
 }
-
 var recurringJobManager =
     app.Services.GetRequiredService<IRecurringJobManager>();
-
 recurringJobManager.AddOrUpdate<ExpiryJob>(
     "expire-requests",
     j => j.RunAsync(),
@@ -176,9 +182,9 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseStaticFiles();                 // /uploads (صور الإعلانات فقط، التراخيص خاصة)
 app.UseCors();
-app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();   // بعد الـ Auth عشان نقدر نحدد الحد لكل مستخدم
 
 if (app.Environment.IsDevelopment()) app.UseHangfireDashboard("/hangfire");   // محلي فقط
 

@@ -35,19 +35,38 @@ public static class RequestEndpoints
                  : err == "not_found" ? Results.NotFound() : Results.BadRequest(new { error = err });
         });
 
-        g.MapGet("/mine", async (ClaimsPrincipal me, AppDbContext db) =>
+        // المستخدم بيأكد إنه استلم الدواء بعد ما الصيدلية سجّلت التسليم
+        g.MapPost("/{id:guid}/confirm-delivery", async (Guid id, ClaimsPrincipal me, RequestService svc) =>
+        {
+            var err = await svc.ConfirmDeliveryAsync(me.UserId(), id);
+            return err == null ? Results.Ok(new { status = "Delivered" })
+                 : err == "not_found" ? Results.NotFound() : Results.Json(new { error = err }, statusCode: 409);
+        });
+
+        // scope=active: الطلبات الجارية بس (لسه شغالة ومتقفلتش). الافتراضي: كل الطلبات (آخر 50).
+        g.MapGet("/mine", async (ClaimsPrincipal me, AppDbContext db, string? scope) =>
         {
             var uid = me.UserId(); var now = DateTime.UtcNow;
-            var rows = await db.DrugRequests.AsNoTracking().Where(r => r.UserId == uid)
-                .OrderByDescending(r => r.CreatedAt).Take(30)
+            var q = db.DrugRequests.AsNoTracking().Where(r => r.UserId == uid);
+            if (scope == "active") q = q.Where(r => r.ExpiresAt > now && r.ClosedAt == null);
+
+            var rows = await q.OrderByDescending(r => r.CreatedAt).Take(50)
                 .Select(r => new
                 {
-                    r.Id, r.Drug.NameEn, r.Drug.NameAr, r.Quantity, r.CreatedAt, r.ExpiresAt,
-                    Total = r.Targets.Count(),
-                    Avail = r.Targets.Count(t => t.Status == TargetStatus.Available || t.Status == TargetStatus.Partial)
+                    r.Id, r.Drug.NameEn, r.Drug.NameAr, r.Quantity, r.CreatedAt, r.ExpiresAt, r.ClosedAt,
+                    Statuses = r.Targets.Select(t => t.Status).ToList()
                 }).ToListAsync();
-            return rows.Select(x => new RequestSummaryDto(x.Id, x.NameEn, x.NameAr, x.Quantity, x.CreatedAt,
-                x.ExpiresAt, x.ExpiresAt <= now, x.Total, x.Avail));
+
+            return rows.Select(x =>
+            {
+                var expired = x.ExpiresAt <= now;
+                var closed = x.ClosedAt != null;
+                return new RequestSummaryDto(x.Id, x.NameEn, x.NameAr, x.Quantity, x.CreatedAt, x.ExpiresAt, expired,
+                    x.Statuses.Count,
+                    x.Statuses.Count(s => s == TargetStatus.Available || s == TargetStatus.Partial),
+                    RequestService.Overall(x.Statuses, closed, expired), closed,
+                    !closed && x.Statuses.Contains(TargetStatus.Delivered));
+            });
         });
 
         g.MapGet("/{id:guid}", async (Guid id, ClaimsPrincipal me, AppDbContext db) =>
@@ -59,16 +78,22 @@ public static class RequestEndpoints
             if (r == null) return Results.NotFound();
 
             var expired = r.ExpiresAt <= now;
+            var closed = r.ClosedAt != null;
+            var statuses = r.Targets.Select(t => t.Status).ToList();
+            var overall = RequestService.Overall(statuses, closed, expired);
+
             var list = r.Targets.OrderBy(t => t.DistanceKm).Select(t =>
             {
-                // بيانات التواصل تظهر بس للصيدلية اللي قالت متوفر، وطول ما الطلب شغال
-                var show = !expired && t.Status is TargetStatus.Available or TargetStatus.Partial;
+                // بيانات التواصل بس للصيدلية اللي قالت متوفر، وطول ما الطلب شغال
+                var show = !expired && !closed && (t.Status == TargetStatus.Available || t.Status == TargetStatus.Partial);
                 var contact = show ? new ContactDto(t.Pharmacy.Phone, t.Pharmacy.Address, t.Pharmacy.Lat, t.Pharmacy.Lng, t.Pharmacy.MapsUrl) : null;
                 return new PharmacyReplyDto(t.PharmacyId, t.Pharmacy.Name, t.DistanceKm, t.Status, t.AvailableQty, t.RespondedAt, contact);
             }).ToList();
 
             return Results.Ok(new RequestDetailsDto(r.Id, r.DrugId, r.Drug.NameEn, r.Drug.NameAr, r.Quantity,
-                r.RadiusKm, r.CreatedAt, r.ExpiresAt, expired, list));
+                r.RadiusKm, r.CreatedAt, r.ExpiresAt, expired, list,
+                overall, closed, !closed && statuses.Contains(TargetStatus.Delivered),
+                overall == "Unavailable" && !expired && !closed && r.RadiusKm < RequestService.MaxRadiusKm));
         });
     }
 }
