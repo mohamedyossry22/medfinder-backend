@@ -337,8 +337,14 @@ namespace MedFinder.src.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime?>("ClosedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeliveredTargetId")
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("DrugId")
                         .HasColumnType("uuid");

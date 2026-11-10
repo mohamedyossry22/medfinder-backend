@@ -97,10 +97,12 @@ public class DrugRequest
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime ExpiresAt { get; set; }
     public bool ExpiryHandled { get; set; }
+    public DateTime? ClosedAt { get; set; }        // المستخدم أكد الاستلام: الطلب اتقفل
+    public Guid? DeliveredTargetId { get; set; }   // الصيدلية اللي سلّمت
     public List<RequestTarget> Targets { get; set; } = new();
 }
 
-public enum TargetStatus { Pending, Available, Partial, Unavailable, Delivered, Expired }
+public enum TargetStatus { Pending, Available, Partial, Unavailable, Delivered, Expired, Cancelled }
 
 public class RequestTarget
 {

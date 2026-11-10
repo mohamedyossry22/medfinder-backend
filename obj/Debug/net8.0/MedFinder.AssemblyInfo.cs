@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MedFinder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2cce25385ab699458f0289d4aae6b015181b154c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b53cdd76d3ecbdd249e2a66fe544d6a31448fc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("MedFinder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MedFinder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
