@@ -93,6 +93,14 @@ public record ReadyItemDto(Guid TargetId, string DrugNameEn, string DrugNameAr, 
 public record BarcodeLinkDto(string Code, Guid DrugId);
 public record ReasonDto(string? Reason);
 public record DeviceDto(string Token, string Platform);
+public record RepublishDto(DateTime StartDate, DateTime EndDate);
+public record CreateComplaintDto(ComplaintCategory Category, string Subject, string Message);
+public record ComplaintReplyDto(ComplaintStatus Status, string? Reply);
+public record MyComplaintDto(Guid Id, ComplaintCategory Category, string Subject, string Message, ComplaintStatus Status,
+    string? AdminReply, DateTime CreatedAt, DateTime? ReviewedAt);
+public record ComplaintRowDto(Guid Id, string SenderRole, string SenderName, string? SenderPhone, string? SenderEmail,
+    string? PharmacyName, ComplaintCategory Category, string Subject, string Message, ComplaintStatus Status,
+    string? AdminReply, DateTime CreatedAt, DateTime? ReviewedAt);
 
 public class PharmacyRegisterForm
 {

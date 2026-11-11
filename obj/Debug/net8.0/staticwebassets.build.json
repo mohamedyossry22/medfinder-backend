@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6eiINCaz453rWZvtVNsyutBKIcoNXfvq/+v+iDNq7SQ=",
+  "Hash": "qKsyqA5iOKDebRm1cygHx0pHn8lcfnoAY903wXKazg8=",
   "Source": "MedFinder",
   "BasePath": "_content/MedFinder",
   "Mode": "Default",
@@ -15,5 +15,44 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\b27baf56ba1c46c4b76d64c9a6ac912c.jpg",
+      "SourceId": "MedFinder",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\",
+      "BasePath": "_content/MedFinder",
+      "RelativePath": "uploads/ads/b27baf56ba1c46c4b76d64c9a6ac912c.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ads\\b27baf56ba1c46c4b76d64c9a6ac912c.jpg"
+    },
+    {
+      "Identity": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\fe183c947d5e4cf284b43e761dae5547.jpg",
+      "SourceId": "MedFinder",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\",
+      "BasePath": "_content/MedFinder",
+      "RelativePath": "uploads/ads/fe183c947d5e4cf284b43e761dae5547.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ads\\fe183c947d5e4cf284b43e761dae5547.jpg"
+    }
+  ]
 }

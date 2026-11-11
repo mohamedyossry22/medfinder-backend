@@ -81,6 +81,10 @@ public class Pharmacy
     public Guid? ReviewedBy { get; set; }
     public DateTime? ReviewedAt { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    // رصيد الإعلانات المجانية (بيتجدد لحد 2 أول كل شهر بتوقيت القاهرة، من غير ما يتراكم)
+    public int FreeAds { get; set; }
+    public string FreeAdsMonth { get; set; } = "";   // "2026-11": آخر شهر اتجدد فيه الرصيد
 }
 
 // ───────── الطلبات ─────────
@@ -114,12 +118,14 @@ public class RequestTarget
     public TargetStatus Status { get; set; } = TargetStatus.Pending;
     public int? AvailableQty { get; set; }
     public double DistanceKm { get; set; }
+    public DateTime NotifiedAt { get; set; } = DateTime.UtcNow;   // وقت وصول الطلب للصيدلية (أساس حساب سرعة الرد)
     public DateTime? RespondedAt { get; set; }
     public DateTime? DeliveredAt { get; set; }
 }
 
 // ───────── الإعلانات وغيرها ─────────
-public enum AdStatus { Pending, Approved, Rejected }
+public enum AdStatus { Pending, Approved, Rejected, Stopped }
+public enum AdCostSource { None, Free, Points }   // الإعلان اتخصم من إيه
 
 public class Ad
 {
@@ -132,6 +138,7 @@ public class Ad
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public AdStatus Status { get; set; } = AdStatus.Pending;
+    public AdCostSource CostSource { get; set; } = AdCostSource.None;
     public string? RejectionReason { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
@@ -143,6 +150,43 @@ public class DeviceToken
     public string Token { get; set; } = "";
     public string Platform { get; set; } = "android";   // android | ios | web
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+}
+
+// ───────── الشكاوى ─────────
+public enum ComplaintCategory { Request, Pharmacy, User, App, Other }
+public enum ComplaintStatus { New, InReview, Resolved, Closed }
+
+/// شكوى من مستخدم أو صيدلية للأدمن
+public class Complaint
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid UserId { get; set; }                 // صاحب الشكوى (مستخدم أو صاحب صيدلية)
+    public AppUser User { get; set; } = null!;
+    public string SenderRole { get; set; } = "";     // User | Pharmacy
+    public ComplaintCategory Category { get; set; }
+    public string Subject { get; set; } = "";
+    public string Message { get; set; } = "";
+    public ComplaintStatus Status { get; set; } = ComplaintStatus.New;
+    public string? AdminReply { get; set; }
+    public Guid? ReviewedBy { get; set; }
+    public DateTime? ReviewedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+}
+
+// ───────── نقاط الصيدليات ─────────
+public enum PointsReason { Reply, Missed, AdSpend, AdRefund }
+
+/// دفتر النقاط: الرصيد = مجموع الـ Delta. (TargetId, Reason) فريد عشان نفس الطلب مايتحسبش مرتين.
+public class PointsEntry
+{
+    public long Id { get; set; }
+    public Guid PharmacyId { get; set; }
+    public int Delta { get; set; }
+    public PointsReason Reason { get; set; }
+    public Guid? TargetId { get; set; }
+    public Guid? AdId { get; set; }
+    public string? Note { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 
 public class AuditLog

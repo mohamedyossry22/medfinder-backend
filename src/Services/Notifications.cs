@@ -12,7 +12,10 @@ namespace MedFinder.Services;
 /// FCM: موبايل + ويب. لو Firebase مش متظبط بيتجاهل بهدوء (مفيد في التطوير).
 public class PushService(AppDbContext db, ILogger<PushService> log)
 {
-    public async Task SendToUsersAsync(IEnumerable<Guid> userIds, string title, string body, Dictionary<string, string>? data = null)
+    /// androidChannel: قناة الإشعارات في تطبيق الموبايل (لازم تكون متعرّفة في MainActivity.kt).
+    /// ttl: لو الجهاز أوفلاين، الإشعار بيفضل مستني الفترة دي بس (الطلب بيخلص وقته فمفيش فايدة من إشعار قديم).
+    public async Task SendToUsersAsync(IEnumerable<Guid> userIds, string title, string body, Dictionary<string, string>? data = null,
+        string? androidChannel = null, TimeSpan? ttl = null)
     {
         if (FirebaseApp.DefaultInstance == null) return;
         try
@@ -25,7 +28,14 @@ public class PushService(AppDbContext db, ILogger<PushService> log)
                 {
                     Tokens = chunk.ToList(),
                     Notification = new Notification { Title = title, Body = body },
-                    Data = data
+                    Data = data,
+                    // High: بيصحّي الجهاز حتى في Doze، وده المهم لوصول الطلب والتطبيق مقفول
+                    Android = new AndroidConfig
+                    {
+                        Priority = Priority.High,
+                        TimeToLive = ttl,
+                        Notification = androidChannel == null ? null : new AndroidNotification { ChannelId = androidChannel, Sound = "default" }
+                    }
                 };
                 var res = await FirebaseMessaging.DefaultInstance.SendEachForMulticastAsync(msg);
 
@@ -51,8 +61,18 @@ public class Notifier(IHubContext<NotificationsHub> hub, PushService push)
         await hub.Clients.Group($"pharmacy:{pharmacyId}").SendAsync("NewRequest", dto);
         await push.SendToUsersAsync(new[] { ownerUserId }, "طلب دواء جديد",
             $"{dto.DrugNameAr} — على بعد {dto.DistanceKm:0.#} كم",
-            new() { ["type"] = "new_request", ["targetId"] = dto.TargetId.ToString() });
+            new() { ["type"] = "new_request", ["targetId"] = dto.TargetId.ToString() },
+            androidChannel: "new_requests", ttl: TimeSpan.FromHours(6));
     }
+
+    /// شكوى جديدة: لايف لأي أدمن فاتح لوحة الإدارة
+    public Task NewComplaintAsync(ComplaintRowDto dto) => hub.Clients.Group("admins").SendAsync("NewComplaint", dto);
+
+    /// الأدمن رد على الشكوى: إشعار لصاحبها
+    public Task ComplaintAnsweredAsync(Guid userId, ComplaintStatus status, string? reply)
+        => push.SendToUsersAsync(new[] { userId }, "تم الرد على شكواك",
+            string.IsNullOrWhiteSpace(reply) ? (status == ComplaintStatus.InReview ? "شكواك قيد المراجعة" : "تم تحديث حالة شكواك") : reply!,
+            new() { ["type"] = "complaint" });
 
     public async Task PharmacyRespondedAsync(Guid userId, Guid requestId, string pharmacyName, TargetStatus status)
     {

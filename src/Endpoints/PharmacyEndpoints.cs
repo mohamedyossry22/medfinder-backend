@@ -144,13 +144,13 @@ public static class PharmacyEndpoints
 
         // الرد: متوفر / غير متوفر / متوفر جزئي (بكمية)
         g.MapPost("/requests/{targetId:guid}/respond", async (Guid targetId, RespondDto dto, ClaimsPrincipal me,
-            AppDbContext db, Notifier notifier) =>
+            AppDbContext db, Notifier notifier, PointsService points) =>
         {
             var ph = await ApprovedAsync(me, db); if (ph == null) return NotApproved();
             if (dto.Status is not (TargetStatus.Available or TargetStatus.Partial or TargetStatus.Unavailable))
                 return Results.BadRequest(new { error = "invalid_status" });
 
-            var t = await db.RequestTargets.Include(x => x.Request)
+            var t = await db.RequestTargets.Include(x => x.Request).ThenInclude(r => r.Drug)
                 .FirstOrDefaultAsync(x => x.Id == targetId && x.PharmacyId == ph.Id);
             if (t == null) return Results.NotFound();
             if (t.Request.ClosedAt != null) return Results.Json(new { error = "closed" }, statusCode: 410);
@@ -167,10 +167,13 @@ public static class PharmacyEndpoints
                 qty = q;
             }
 
+            var first = t.RespondedAt == null;   // النقاط على أول رد بس
             t.Status = dto.Status; t.AvailableQty = qty; t.RespondedAt = DateTime.UtcNow;
             await db.SaveChangesAsync();
+
+            var award = first ? await points.AwardReplyAsync(ph.Id, t, t.Request.Drug.NameEn) : null;
             await notifier.PharmacyRespondedAsync(t.Request.UserId, t.RequestId, ph.Name, t.Status);
-            return Results.Ok(new { status = t.Status });
+            return Results.Ok(new { status = t.Status, pointsAwarded = award?.Delta ?? 0, pointsBalance = award?.Balance });
         });
 
         // صفحة "الجاهزة للتسليم"
@@ -223,6 +226,7 @@ public static class PharmacyEndpoints
         });
 
         // ───────── الإعلانات (تحتاج موافقة الأدمن) ─────────
+        // الرصيد: إعلانين مجانيين كل شهر (من غير تراكم) + كل 50 نقطة = إعلان. أمر النشر هو اللي بيخصم.
         g.MapGet("/ads", async (ClaimsPrincipal me, AppDbContext db) =>
         {
             var ph = await ApprovedAsync(me, db); if (ph == null) return NotApproved();
@@ -231,28 +235,86 @@ public static class PharmacyEndpoints
                 .Select(a => new { a.Id, a.Title, a.ImagePath, a.LinkUrl, a.StartDate, a.EndDate, a.Status, a.RejectionReason }).ToListAsync());
         });
 
-        g.MapPost("/ads", async ([FromForm] AdForm f, ClaimsPrincipal me, AppDbContext db, IFileStorage files) =>
+        g.MapGet("/ads/balance", async (ClaimsPrincipal me, AppDbContext db, PointsService points) =>
+        {
+            var ph = await ApprovedAsync(me, db); if (ph == null) return NotApproved();
+            var b = await points.GetBalanceAsync(ph.Id);
+            return Results.Ok(new
+            {
+                b.FreeAds, b.FreeAdsMax, b.Points, b.PointsPerAd, b.AdsFromPoints, b.MaxAdDays, b.RenewsAt,
+                History = await points.HistoryAsync(ph.Id)
+            });
+        });
+
+        g.MapPost("/ads", async ([FromForm] AdForm f, ClaimsPrincipal me, AppDbContext db, IFileStorage files, PointsService points) =>
         {
             var ph = await ApprovedAsync(me, db); if (ph == null) return NotApproved();
             var title = f.Title?.Trim() ?? "";
             if (title.Length is < 3 or > 80) return Results.BadRequest(new { error = "invalid_title" });
             if (f.Image == null) return Results.BadRequest(new { error = "image_required" });
             var start = Ext.Utc(f.StartDate); var end = Ext.Utc(f.EndDate);
-            if (end <= start || end <= DateTime.UtcNow || (end - start).TotalDays > 90)
+            if (!PointsRules.ValidAdDates(start, end, DateTime.UtcNow))
                 return Results.BadRequest(new { error = "invalid_dates" });
             if (!string.IsNullOrWhiteSpace(f.LinkUrl) &&
                 !(Uri.TryCreate(f.LinkUrl, UriKind.Absolute, out var u) && u.Scheme == "https"))
                 return Results.BadRequest(new { error = "invalid_link" });
 
-            string path;
-            try { path = await files.SaveImageAsync(f.Image, "ads", isPrivate: false); }
-            catch (InvalidOperationException ex) { return Results.BadRequest(new { error = ex.Message }); }
+            var ad = new Ad { PharmacyId = ph.Id, Title = title, LinkUrl = f.LinkUrl?.Trim(), StartDate = start, EndDate = end };
 
-            var ad = new Ad { PharmacyId = ph.Id, Title = title, ImagePath = path, LinkUrl = f.LinkUrl?.Trim(), StartDate = start, EndDate = end };
-            db.Ads.Add(ad);
-            await db.SaveChangesAsync();
+            // أمر النشر بيخصم من الرصيد (مجاني الأول، وبعدين نقاط)
+            var src = await points.ChargeAdAsync(ph.Id, ad.Id, title);
+            if (src == null) return Err("no_ad_credit", 402);
+            ad.CostSource = src.Value;
+
+            try
+            {
+                ad.ImagePath = await files.SaveImageAsync(f.Image, "ads", isPrivate: false);
+                db.Ads.Add(ad);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // فشل بعد الخصم: نرجّع الرصيد
+                db.Entry(ad).State = EntityState.Detached;
+                await points.RefundAdAsync(ad);
+                await db.SaveChangesAsync();
+                if (ex is InvalidOperationException) return Results.BadRequest(new { error = ex.Message });
+                throw;
+            }
             return Results.Created($"/api/pharmacy/ads/{ad.Id}", new { ad.Id, status = ad.Status });
         }).DisableAntiforgery();
+
+        // إيقاف إعلان شغّال (الرصيد المخصوم مابيرجعش)
+        g.MapPost("/ads/{id:guid}/stop", async (Guid id, ClaimsPrincipal me, AppDbContext db) =>
+        {
+            var ph = await ApprovedAsync(me, db); if (ph == null) return NotApproved();
+            var ad = await db.Ads.FirstOrDefaultAsync(a => a.Id == id && a.PharmacyId == ph.Id);
+            if (ad == null) return Results.NotFound();
+            if (ad.Status != AdStatus.Approved || ad.EndDate <= DateTime.UtcNow) return Err("invalid_transition", 409);
+            ad.Status = AdStatus.Stopped;
+            await db.SaveChangesAsync();
+            return Results.Ok(new { status = ad.Status });
+        });
+
+        // إعادة نشر إعلان قديم (موقوف أو منتهي): بيخصم من الرصيد، ومحتواه معتمد قبل كده فمش بيتراجع تاني
+        g.MapPost("/ads/{id:guid}/republish", async (Guid id, RepublishDto dto, ClaimsPrincipal me, AppDbContext db, PointsService points) =>
+        {
+            var ph = await ApprovedAsync(me, db); if (ph == null) return NotApproved();
+            var ad = await db.Ads.FirstOrDefaultAsync(a => a.Id == id && a.PharmacyId == ph.Id);
+            if (ad == null) return Results.NotFound();
+            var now = DateTime.UtcNow;
+            var canRepublish = ad.Status == AdStatus.Stopped || (ad.Status == AdStatus.Approved && ad.EndDate <= now);
+            if (!canRepublish) return Err("invalid_transition", 409);
+
+            var start = Ext.Utc(dto.StartDate); var end = Ext.Utc(dto.EndDate);
+            if (!PointsRules.ValidAdDates(start, end, now)) return Err("invalid_dates");
+
+            var src = await points.ChargeAdAsync(ph.Id, ad.Id, ad.Title);
+            if (src == null) return Err("no_ad_credit", 402);
+            ad.StartDate = start; ad.EndDate = end; ad.Status = AdStatus.Approved; ad.CostSource = src.Value;
+            await db.SaveChangesAsync();
+            return Results.Ok(new { status = ad.Status });
+        });
     }
 
     /// إعلانات الصفحة الرئيسية للموبايل + تسجيل أجهزة الإشعارات

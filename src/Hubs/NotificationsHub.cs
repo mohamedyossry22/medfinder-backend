@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace MedFinder.Hubs;
 
 /// الصيدلية المعتمدة بتدخل group بتاعها، والمستخدم بيدخل group بتاعه.
-/// الأحداث: NewRequest (للصيدلية) و RequestUpdated (للمستخدم).
+/// الأحداث: NewRequest (للصيدلية) و RequestUpdated (للمستخدم) و NewComplaint (للأدمن).
 [Authorize]
 public class NotificationsHub(AppDbContext db) : Hub
 {
@@ -16,6 +16,8 @@ public class NotificationsHub(AppDbContext db) : Hub
     {
         var uid = Context.User!.UserId();
         await Groups.AddToGroupAsync(Context.ConnectionId, $"user:{uid}");
+
+        if (Context.User.IsInRole(Roles.Admin)) await Groups.AddToGroupAsync(Context.ConnectionId, "admins");   // الشكاوى الجديدة لايف
 
         var pid = Context.User.PharmacyId();
         if (pid != null && await db.Pharmacies.AnyAsync(p =>

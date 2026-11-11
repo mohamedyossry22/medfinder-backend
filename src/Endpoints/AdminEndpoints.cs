@@ -154,17 +154,20 @@ public static class AdminEndpoints
         {
             var a = await db.Ads.FirstOrDefaultAsync(x => x.Id == id);
             if (a == null) return Results.NotFound();
+            if (a.Status is not (AdStatus.Pending or AdStatus.Rejected)) return Results.Conflict(new { error = "invalid_transition" });
             a.Status = AdStatus.Approved; a.RejectionReason = null;
             Audit(db, me.UserId(), "ad.approve", "Ad", a.Id);
             await db.SaveChangesAsync();
             return Results.Ok();
         });
 
-        g.MapPost("/ads/{id:guid}/reject", async (Guid id, ReasonDto dto, ClaimsPrincipal me, AppDbContext db) =>
+        g.MapPost("/ads/{id:guid}/reject", async (Guid id, ReasonDto dto, ClaimsPrincipal me, AppDbContext db, PointsService points) =>
         {
             if (string.IsNullOrWhiteSpace(dto.Reason)) return Results.BadRequest(new { error = "reason_required" });
             var a = await db.Ads.FirstOrDefaultAsync(x => x.Id == id);
             if (a == null) return Results.NotFound();
+            if (a.Status is AdStatus.Stopped or AdStatus.Rejected) return Results.Conflict(new { error = "invalid_transition" });
+            if (a.Status == AdStatus.Pending) await points.RefundAdAsync(a);   // اترفض قبل ما يظهر: الرصيد يرجع للصيدلية
             a.Status = AdStatus.Rejected; a.RejectionReason = dto.Reason.Trim();
             Audit(db, me.UserId(), "ad.reject", "Ad", a.Id, dto.Reason);
             await db.SaveChangesAsync();
@@ -203,6 +206,46 @@ public static class AdminEndpoints
             var dir = Path.Combine(env.ContentRootPath, "data");
             return Results.Ok(await importer.ImportAsync(
                 Path.Combine(dir, "egyptian-drugs.json"), Path.Combine(dir, "restricted-ingredients.txt"), ct));
+        });
+
+        // ───────── الشكاوى ─────────
+        g.MapGet("/complaints", async (AppDbContext db, ComplaintStatus? status, string? role, string? q, int page = 1, int pageSize = 20) =>
+        {
+            page = Math.Max(1, page); pageSize = Math.Clamp(pageSize, 1, 100);
+            var query = db.Complaints.AsNoTracking().AsQueryable();
+            if (status != null) query = query.Where(c => c.Status == status);
+            if (role is Roles.User or Roles.Pharmacy) query = query.Where(c => c.SenderRole == role);
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                var s = $"%{q.Trim()}%";
+                query = query.Where(c => EF.Functions.ILike(c.Subject, s) || EF.Functions.ILike(c.Message, s) || EF.Functions.ILike(c.User.FullName, s));
+            }
+            var total = await query.CountAsync();
+            var items = await query.OrderByDescending(c => c.CreatedAt).Skip((page - 1) * pageSize).Take(pageSize).ToRows(db).ToListAsync();
+            return Results.Ok(new { total, page, pageSize, items });
+        });
+
+        // عدد الشكاوى الجديدة (للبادج في القايمة الجانبية)
+        g.MapGet("/complaints/count", async (AppDbContext db) =>
+            Results.Ok(new { newCount = await db.Complaints.CountAsync(c => c.Status == ComplaintStatus.New) }));
+
+        g.MapPost("/complaints/{id:guid}/respond", async (Guid id, ComplaintReplyDto dto, ClaimsPrincipal me, AppDbContext db, Notifier notifier) =>
+        {
+            if (dto.Status == ComplaintStatus.New || !Enum.IsDefined(dto.Status)) return Results.BadRequest(new { error = "invalid_status" });
+            var reply = dto.Reply?.Trim();
+            if (reply?.Length > 1000) return Results.BadRequest(new { error = "reply_too_long" });
+            if ((dto.Status is ComplaintStatus.Resolved or ComplaintStatus.Closed) && string.IsNullOrEmpty(reply))
+                return Results.BadRequest(new { error = "reply_required" });
+
+            var c = await db.Complaints.FirstOrDefaultAsync(x => x.Id == id);
+            if (c == null) return Results.NotFound();
+            c.Status = dto.Status;
+            if (!string.IsNullOrEmpty(reply)) c.AdminReply = reply;
+            c.ReviewedBy = me.UserId(); c.ReviewedAt = DateTime.UtcNow;
+            Audit(db, me.UserId(), "complaint." + dto.Status.ToString().ToLowerInvariant(), "Complaint", c.Id, reply);
+            await db.SaveChangesAsync();
+            await notifier.ComplaintAnsweredAsync(c.UserId, c.Status, c.AdminReply);
+            return Results.Ok(new { status = c.Status });
         });
 
         // ───────── الإحصائيات ─────────

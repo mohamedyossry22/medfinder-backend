@@ -1,6 +1,6 @@
+E:\Yossry\pharma-app\github\medfinder-backend\bin\Debug\net8.0\data\egyptian-drugs.json
 E:\Yossry\pharma-app\github\medfinder-backend\bin\Debug\net8.0\appsettings.json
 E:\Yossry\pharma-app\github\medfinder-backend\bin\Debug\net8.0\data\arabic-synonyms.json
-E:\Yossry\pharma-app\github\medfinder-backend\bin\Debug\net8.0\data\egyptian-drugs.json
 E:\Yossry\pharma-app\github\medfinder-backend\bin\Debug\net8.0\MedFinder.staticwebassets.runtime.json
 E:\Yossry\pharma-app\github\medfinder-backend\bin\Debug\net8.0\MedFinder.exe
 E:\Yossry\pharma-app\github\medfinder-backend\bin\Debug\net8.0\MedFinder.deps.json

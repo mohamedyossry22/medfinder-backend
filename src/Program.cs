@@ -79,6 +79,11 @@ builder.Services.AddRateLimiter(o =>
     o.AddPolicy("scan", ctx => RateLimitPartition.GetFixedWindowLimiter(
         ctx.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
         _ => new FixedWindowRateLimiterOptions { PermitLimit = 10, Window = TimeSpan.FromHours(1) }));
+
+    // منع إغراق الأدمن بالشكاوى: 5 في الساعة لكل مستخدم
+    o.AddPolicy("complaint", ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ctx.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? ctx.Connection.RemoteIpAddress?.ToString() ?? "anon",
+        _ => new FixedWindowRateLimiterOptions { PermitLimit = 5, Window = TimeSpan.FromHours(1) }));
 });
 
 // ── Hangfire ──
@@ -106,6 +111,7 @@ builder.Services.AddScoped<MapsLinkParser>();
 builder.Services.AddScoped<PushService>();
 builder.Services.AddScoped<Notifier>();
 builder.Services.AddScoped<RequestService>();
+builder.Services.AddScoped<PointsService>();
 builder.Services.AddScoped<ExpiryJob>();
 builder.Services.AddScoped<DrugImporter>();
 builder.Services.AddScoped<IVisionExtractor, AnthropicVisionExtractor>();
@@ -194,6 +200,7 @@ app.MapDrugs();
 app.MapRequests();
 app.MapPharmacy();
 app.MapSharedEndpoints();
+app.MapComplaints();
 app.MapAdmin();
 
 app.Run();

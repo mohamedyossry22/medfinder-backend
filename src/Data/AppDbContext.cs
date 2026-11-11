@@ -17,6 +17,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     public DbSet<DeviceToken> DeviceTokens => Set<DeviceToken>();
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
     public DbSet<OtpCode> OtpCodes => Set<OtpCode>();
+    public DbSet<Complaint> Complaints => Set<Complaint>();
+    public DbSet<PointsEntry> PointsLedger => Set<PointsEntry>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder b)
         => b.Properties<Enum>().HaveConversion<string>();   // الـ enums تتخزن كنص
@@ -63,6 +65,23 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
 
         b.Entity<DeviceToken>().HasIndex(x => x.Token).IsUnique();
         b.Entity<OtpCode>().HasIndex(x => new { x.Phone, x.CreatedAt });
+        b.Entity<PointsEntry>(e =>
+        {
+            e.Property(x => x.Note).HasMaxLength(200);
+            e.HasOne<Pharmacy>().WithMany().HasForeignKey(x => x.PharmacyId);
+            e.HasIndex(x => new { x.PharmacyId, x.CreatedAt });
+            e.HasIndex(x => new { x.TargetId, x.Reason }).IsUnique().HasFilter("\"TargetId\" IS NOT NULL");
+        });
+
+        b.Entity<Complaint>(e =>
+        {
+            e.Property(x => x.Subject).HasMaxLength(150);
+            e.Property(x => x.Message).HasMaxLength(2000);
+            e.Property(x => x.AdminReply).HasMaxLength(1000);
+            e.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
+            e.HasIndex(x => new { x.Status, x.CreatedAt });
+            e.HasIndex(x => new { x.UserId, x.CreatedAt });
+        });
         b.Entity<Ad>().HasIndex(x => new { x.Status, x.StartDate, x.EndDate });
     }
 }

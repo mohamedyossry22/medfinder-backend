@@ -145,9 +145,16 @@ public class ExpiryJob(AppDbContext db, PushService push)
         var due = await db.DrugRequests.Include(r => r.Targets).Include(r => r.Drug)
             .Where(r => !r.ExpiryHandled && r.ExpiresAt <= now).Take(500).ToListAsync();
 
+        // صيدليات ما ردّتش لحد ما الطلب خلص: خصم نقطتين. الطلبات اللي اتقفلت بتسليم (Cancelled) مش بتتخصم.
+        var missed = new List<(Guid PharmacyId, Guid TargetId, string Drug)>();
+
         foreach (var r in due)
         {
-            foreach (var t in r.Targets.Where(t => t.Status == TargetStatus.Pending)) t.Status = TargetStatus.Expired;
+            foreach (var t in r.Targets.Where(t => t.Status == TargetStatus.Pending))
+            {
+                t.Status = TargetStatus.Expired;
+                missed.Add((t.PharmacyId, t.Id, r.Drug.NameEn));
+            }
             r.ExpiryHandled = true;
 
             var found = r.Targets.Any(t => t.Status is TargetStatus.Available or TargetStatus.Partial or TargetStatus.Delivered);
@@ -155,6 +162,18 @@ public class ExpiryJob(AppDbContext db, PushService push)
                 await push.SendToUsersAsync(new[] { r.UserId }, "انتهى وقت طلبك",
                     $"ما لقيناش {r.Drug.NameAr} متوفر. جرّب تبحث تاني بنطاق أوسع.",
                     new() { ["type"] = "request_expired", ["requestId"] = r.Id.ToString() });
+        }
+
+        if (missed.Count > 0)
+        {
+            var ids = missed.Select(m => m.PharmacyId).Distinct().ToList();
+            var active = (await db.Pharmacies.Where(p => ids.Contains(p.Id) && p.Status == PharmacyStatus.Approved)
+                .Select(p => p.Id).ToListAsync()).ToHashSet();   // الموقوفة مش بتتخصم
+            foreach (var m in missed.Where(m => active.Contains(m.PharmacyId)))
+                db.PointsLedger.Add(new PointsEntry
+                {
+                    PharmacyId = m.PharmacyId, Delta = -PointsRules.MissPenalty, Reason = PointsReason.Missed, TargetId = m.TargetId, Note = m.Drug
+                });
         }
         await db.SaveChangesAsync();
     }

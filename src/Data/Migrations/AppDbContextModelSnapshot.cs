@@ -27,6 +27,10 @@ namespace MedFinder.src.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+                    b.Property<string>("CostSource")
+                        .IsRequired()
+                        .HasColumnType("text");
+
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -209,6 +213,59 @@ namespace MedFinder.src.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("BarcodeVotes");
+                });
+
+            modelBuilder.Entity("MedFinder.Domain.Complaint", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AdminReply")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)");
+
+                    b.Property<DateTime?>("ReviewedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ReviewedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("SenderRole")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Status", "CreatedAt");
+
+                    b.HasIndex("UserId", "CreatedAt");
+
+                    b.ToTable("Complaints");
                 });
 
             modelBuilder.Entity("MedFinder.Domain.DeviceToken", b =>
@@ -427,6 +484,13 @@ namespace MedFinder.src.Data.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
+                    b.Property<int>("FreeAds")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("FreeAdsMonth")
+                        .IsRequired()
+                        .HasColumnType("text");
+
 
                     b.Property<string>("Governorate")
                         .IsRequired()
@@ -491,6 +555,48 @@ namespace MedFinder.src.Data.Migrations
                     b.ToTable("Pharmacies");
                 });
 
+            modelBuilder.Entity("MedFinder.Domain.PointsEntry", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<Guid?>("AdId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Delta")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<Guid>("PharmacyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("TargetId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PharmacyId", "CreatedAt");
+
+                    b.HasIndex("TargetId", "Reason")
+                        .IsUnique()
+                        .HasFilter("\"TargetId\" IS NOT NULL");
+
+                    b.ToTable("PointsLedger");
+                });
+
             modelBuilder.Entity("MedFinder.Domain.RequestTarget", b =>
                 {
                     b.Property<Guid>("Id")
@@ -505,6 +611,9 @@ namespace MedFinder.src.Data.Migrations
 
                     b.Property<double>("DistanceKm")
                         .HasColumnType("double precision");
+                    b.Property<DateTime>("NotifiedAt")
+                        .HasColumnType("timestamp with time zone");
+
 
                     b.Property<Guid>("PharmacyId")
                         .HasColumnType("uuid");
@@ -677,6 +786,17 @@ namespace MedFinder.src.Data.Migrations
                         .HasForeignKey("DrugBarcodeId");
                 });
 
+            modelBuilder.Entity("MedFinder.Domain.Complaint", b =>
+                {
+                    b.HasOne("MedFinder.Domain.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MedFinder.Domain.DrugBarcode", b =>
                 {
                     b.HasOne("MedFinder.Domain.Drug", "Drug")
@@ -708,6 +828,15 @@ namespace MedFinder.src.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("MedFinder.Domain.PointsEntry", b =>
+                {
+                    b.HasOne("MedFinder.Domain.Pharmacy", null)
+                        .WithMany()
+                        .HasForeignKey("PharmacyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MedFinder.Domain.RequestTarget", b =>

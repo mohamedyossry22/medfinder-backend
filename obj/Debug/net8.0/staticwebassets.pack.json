@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\b27baf56ba1c46c4b76d64c9a6ac912c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ads\\b27baf56ba1c46c4b76d64c9a6ac912c.jpg"
+    },
+    {
+      "Id": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\fe183c947d5e4cf284b43e761dae5547.jpg",
+      "PackagePath": "staticwebassets\\uploads\\ads\\fe183c947d5e4cf284b43e761dae5547.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MedFinder.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.MedFinder.props",
+      "PackagePath": "build\\MedFinder.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.MedFinder.props",
+      "PackagePath": "buildMultiTargeting\\MedFinder.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.MedFinder.props",
+      "PackagePath": "buildTransitive\\MedFinder.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
