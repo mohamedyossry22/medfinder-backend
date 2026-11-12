@@ -423,6 +423,9 @@ namespace MedFinder.src.Data.Migrations
 
                     b.Property<double>("RadiusKm")
                         .HasColumnType("double precision");
+                    b.Property<DateTime>("ReplyDeadline")
+                        .HasColumnType("timestamp with time zone");
+
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");

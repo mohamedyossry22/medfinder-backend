@@ -79,10 +79,10 @@ public record ContactDto(string Phone, string? Address, double Lat, double Lng, 
 public record PharmacyReplyDto(Guid PharmacyId, string Name, double DistanceKm, TargetStatus Status,
     int? AvailableQty, DateTime? RespondedAt, ContactDto? Contact);
 public record RequestDetailsDto(Guid Id, Guid DrugId, string DrugNameEn, string DrugNameAr, int Quantity,
-    double RadiusKm, DateTime CreatedAt, DateTime ExpiresAt, bool IsExpired, List<PharmacyReplyDto> Pharmacies,
+    double RadiusKm, DateTime CreatedAt, DateTime ReplyDeadline, DateTime ExpiresAt, bool IsExpired, List<PharmacyReplyDto> Pharmacies,
     string OverallStatus, bool IsClosed, bool NeedsConfirmation, bool CanExpand);
 public record RequestSummaryDto(Guid Id, string DrugNameEn, string DrugNameAr, int Quantity, DateTime CreatedAt,
-    DateTime ExpiresAt, bool IsExpired, int TotalPharmacies, int AvailableCount,
+    DateTime ReplyDeadline, DateTime ExpiresAt, bool IsExpired, int TotalPharmacies, int AvailableCount,
     string OverallStatus, bool IsClosed, bool NeedsConfirmation);
 public record HistoryItemDto(Guid TargetId, string DrugNameEn, string DrugNameAr, int Quantity, DateTime DeliveredAt, bool ConfirmedByUser);
 public record UpdatePharmacyProfileDto(string? PharmacyName, string? PharmacistName, string? Phone, string? Address,

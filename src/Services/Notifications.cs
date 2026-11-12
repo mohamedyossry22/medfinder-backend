@@ -62,7 +62,7 @@ public class Notifier(IHubContext<NotificationsHub> hub, PushService push)
         await push.SendToUsersAsync(new[] { ownerUserId }, "طلب دواء جديد",
             $"{dto.DrugNameAr} — على بعد {dto.DistanceKm:0.#} كم",
             new() { ["type"] = "new_request", ["targetId"] = dto.TargetId.ToString() },
-            androidChannel: "new_requests", ttl: TimeSpan.FromHours(6));
+            androidChannel: "new_requests", ttl: RequestService.ReplyWindow);   // الإشعار بعد مهلة الرد ملوش لازمة
     }
 
     /// شكوى جديدة: لايف لأي أدمن فاتح لوحة الإدارة

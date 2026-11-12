@@ -277,7 +277,7 @@ public static class AdminEndpoints
 
             // طلب خلص وقته ومفيش حد قال متوفر = نقص حقيقي
             var unanswered = await db.DrugRequests
-                .Where(r => r.CreatedAt >= d30 && r.ExpiresAt <= now &&
+                .Where(r => r.CreatedAt >= d30 && r.ReplyDeadline <= now &&
                     !r.Targets.Any(t => t.Status == TargetStatus.Available || t.Status == TargetStatus.Partial || t.Status == TargetStatus.Delivered))
                 .GroupBy(r => r.DrugId).Select(x => new { DrugId = x.Key, Count = x.Count() })
                 .OrderByDescending(x => x.Count).Take(10).ToListAsync();

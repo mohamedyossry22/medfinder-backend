@@ -48,20 +48,22 @@ public static class RequestEndpoints
         {
             var uid = me.UserId(); var now = DateTime.UtcNow;
             var q = db.DrugRequests.AsNoTracking().Where(r => r.UserId == uid);
-            if (scope == "active") q = q.Where(r => r.ExpiresAt > now && r.ClosedAt == null);
+            if (scope == "active")
+                q = q.Where(r => r.ExpiresAt > now && r.ClosedAt == null &&
+                    (r.ReplyDeadline > now || r.Targets.Any(t => t.Status == TargetStatus.Available || t.Status == TargetStatus.Partial || t.Status == TargetStatus.Delivered)));
 
             var rows = await q.OrderByDescending(r => r.CreatedAt).Take(50)
                 .Select(r => new
                 {
-                    r.Id, r.Drug.NameEn, r.Drug.NameAr, r.Quantity, r.CreatedAt, r.ExpiresAt, r.ClosedAt,
+                    r.Id, r.Drug.NameEn, r.Drug.NameAr, r.Quantity, r.CreatedAt, r.ReplyDeadline, r.ExpiresAt, r.ClosedAt,
                     Statuses = r.Targets.Select(t => t.Status).ToList()
                 }).ToListAsync();
 
             return rows.Select(x =>
             {
-                var expired = x.ExpiresAt <= now;
+                var expired = RequestService.IsOver(x.ReplyDeadline, x.ExpiresAt, x.Statuses, now);
                 var closed = x.ClosedAt != null;
-                return new RequestSummaryDto(x.Id, x.NameEn, x.NameAr, x.Quantity, x.CreatedAt, x.ExpiresAt, expired,
+                return new RequestSummaryDto(x.Id, x.NameEn, x.NameAr, x.Quantity, x.CreatedAt, x.ReplyDeadline, x.ExpiresAt, expired,
                     x.Statuses.Count,
                     x.Statuses.Count(s => s == TargetStatus.Available || s == TargetStatus.Partial),
                     RequestService.Overall(x.Statuses, closed, expired), closed,
@@ -77,9 +79,9 @@ public static class RequestEndpoints
                 .FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid);
             if (r == null) return Results.NotFound();
 
-            var expired = r.ExpiresAt <= now;
-            var closed = r.ClosedAt != null;
             var statuses = r.Targets.Select(t => t.Status).ToList();
+            var expired = RequestService.IsOver(r.ReplyDeadline, r.ExpiresAt, statuses, now);
+            var closed = r.ClosedAt != null;
             var overall = RequestService.Overall(statuses, closed, expired);
 
             var list = r.Targets.OrderBy(t => t.DistanceKm).Select(t =>
@@ -91,7 +93,7 @@ public static class RequestEndpoints
             }).ToList();
 
             return Results.Ok(new RequestDetailsDto(r.Id, r.DrugId, r.Drug.NameEn, r.Drug.NameAr, r.Quantity,
-                r.RadiusKm, r.CreatedAt, r.ExpiresAt, expired, list,
+                r.RadiusKm, r.CreatedAt, r.ReplyDeadline, r.ExpiresAt, expired, list,
                 overall, closed, !closed && statuses.Contains(TargetStatus.Delivered),
                 overall == "Unavailable" && !expired && !closed && r.RadiusKm < RequestService.MaxRadiusKm));
         });

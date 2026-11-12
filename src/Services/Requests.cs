@@ -10,7 +10,8 @@ public class RequestService(AppDbContext db, Notifier notifier, ILogger<RequestS
     public const int MaxPerHour = 5;          // حد الطلبات للمستخدم في الساعة
     public const int MaxPharmacies = 30;      // أقصى عدد صيدليات للطلب الواحد
     public const double MaxRadiusKm = 20;
-    public static readonly TimeSpan Lifetime = TimeSpan.FromHours(6);
+    public static readonly TimeSpan ReplyWindow = TimeSpan.FromMinutes(120);   // مهلة رد الصيدليات
+    public static readonly TimeSpan Lifetime = TimeSpan.FromHours(6);          // فترة الاستلام والتسليم
 
     public async Task<CreateResult> CreateAsync(Guid userId, CreateRequestDto dto)
     {
@@ -30,7 +31,7 @@ public class RequestService(AppDbContext db, Notifier notifier, ILogger<RequestS
         {
             UserId = userId, DrugId = drug.Id, Quantity = dto.Quantity,
             Lat = dto.Lat, Lng = dto.Lng, RadiusKm = dto.RadiusKm,
-            CreatedAt = now, ExpiresAt = now + Lifetime
+            CreatedAt = now, ReplyDeadline = now + ReplyWindow, ExpiresAt = now + Lifetime
         };
 
         var targets = await FindTargetsAsync(req, dto.RadiusKm, new HashSet<Guid>());
@@ -50,7 +51,8 @@ public class RequestService(AppDbContext db, Notifier notifier, ILogger<RequestS
             .FirstOrDefaultAsync(r => r.Id == requestId && r.UserId == userId);
         if (req == null) return ("not_found", 0);
         if (req.ClosedAt != null) return ("closed", 0);
-        if (req.ExpiresAt <= DateTime.UtcNow) return ("expired", 0);
+        // بعد مهلة الرد الصيدليات الجديدة مش هيلحقوا يردوا، فالتوسيع بيقفل معاها
+        if (req.ExpiresAt <= DateTime.UtcNow || req.ReplyDeadline <= DateTime.UtcNow) return ("expired", 0);
         if (newRadius <= req.RadiusKm || newRadius > MaxRadiusKm) return ("invalid_radius", 0);
 
         var excluded = req.Targets.Select(t => t.PharmacyId).ToHashSet();
@@ -72,6 +74,11 @@ public class RequestService(AppDbContext db, Notifier notifier, ILogger<RequestS
         if (st.Count > 0 && st.All(s => s == TargetStatus.Unavailable)) return "Unavailable";
         return "Pending";
     }
+
+    /// الطلب "خلص" عند المستخدم: لو فات وقت الاستلام، أو فات وقت الرد ومفيش صيدلية قالت متوفر
+    public static bool IsOver(DateTime replyDeadline, DateTime expiresAt, IEnumerable<TargetStatus> statuses, DateTime now) =>
+        expiresAt <= now || (replyDeadline <= now &&
+            !statuses.Any(s => s is TargetStatus.Available or TargetStatus.Partial or TargetStatus.Delivered));
 
     /// المستخدم بيأكد إنه استلم الدواء: الطلب بيتقفل وبيتلغي عند باقي الصيدليات
     public async Task<string?> ConfirmDeliveryAsync(Guid userId, Guid requestId)
@@ -129,31 +136,34 @@ public class RequestService(AppDbContext db, Notifier notifier, ILogger<RequestS
         foreach (var (t, p) in targets)
         {
             var dto = new IncomingRequestDto(t.Id, req.Id, drug.NameEn, drug.NameAr, drug.ActiveIngredient,
-                req.Quantity, t.DistanceKm, req.CreatedAt, req.ExpiresAt);
+                req.Quantity, t.DistanceKm, req.CreatedAt, req.ReplyDeadline);   // للصيدلية: ExpiresAt = آخر وقت للرد
             try { await notifier.NewRequestAsync(p.Id, p.OwnerUserId, dto); }
             catch (Exception ex) { log.LogWarning(ex, "notify pharmacy {Id} failed", p.Id); }   // فشل إشعار مايوقفش الطلب
         }
     }
 }
 
-/// Hangfire: كل 5 دقايق. الطلب بينتهي بعد 6 ساعات (بنخفيه ونقفله، مش بنمسحه عشان الإحصائيات).
+/// Hangfire: كل 5 دقايق. بيعالج الطلبات اللي خلصت مهلة الرد (120 دقيقة):
+/// الصيدليات اللي ما ردّتش بتتحول لـ Expired وبتتخصم نقطتين، إلا الطلبات اللي اتعملت من 12 منتصف الليل لـ 9 الصبح (بتوقيت القاهرة).
+/// الطلب نفسه بيفضل لحد 6 ساعات لفترة الاستلام (بنخفيه ونقفله، مش بنمسحه عشان الإحصائيات).
 public class ExpiryJob(AppDbContext db, PushService push)
 {
     public async Task RunAsync()
     {
         var now = DateTime.UtcNow;
         var due = await db.DrugRequests.Include(r => r.Targets).Include(r => r.Drug)
-            .Where(r => !r.ExpiryHandled && r.ExpiresAt <= now).Take(500).ToListAsync();
+            .Where(r => !r.ExpiryHandled && r.ReplyDeadline <= now).Take(500).ToListAsync();
 
-        // صيدليات ما ردّتش لحد ما الطلب خلص: خصم نقطتين. الطلبات اللي اتقفلت بتسليم (Cancelled) مش بتتخصم.
         var missed = new List<(Guid PharmacyId, Guid TargetId, string Drug)>();
 
         foreach (var r in due)
         {
+            // الطلبات اللي اتقفلت بتسليم (Cancelled) مش بتتخصم. وطلبات الليل (12 - 9 الصبح) مافيهاش خصم.
+            var penalize = !PointsRules.IsNoPenaltyTime(r.CreatedAt);
             foreach (var t in r.Targets.Where(t => t.Status == TargetStatus.Pending))
             {
                 t.Status = TargetStatus.Expired;
-                missed.Add((t.PharmacyId, t.Id, r.Drug.NameEn));
+                if (penalize) missed.Add((t.PharmacyId, t.Id, r.Drug.NameEn));
             }
             r.ExpiryHandled = true;
 

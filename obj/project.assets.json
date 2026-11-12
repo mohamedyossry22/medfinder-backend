@@ -15,12 +15,12 @@
           }
         }
       },
-      "FirebaseAdmin/3.7.0": {
+      "FirebaseAdmin/3.7.1": {
         "type": "package",
         "dependencies": {
-          "Google.Api.Gax.Rest": "4.13.1",
-          "Google.Apis.Auth": "1.73.0",
-          "System.Collections.Immutable": "8.0.0"
+          "Google.Api.Gax.Rest": "4.15.2",
+          "Google.Apis.Auth": "1.77.0",
+          "System.Collections.Immutable": "10.0.14"
         },
         "compile": {
           "lib/net6.0/FirebaseAdmin.dll": {
@@ -33,7 +33,7 @@
           }
         }
       },
-      "Google.Api.Gax/4.13.1": {
+      "Google.Api.Gax/4.15.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
@@ -51,11 +51,11 @@
           }
         }
       },
-      "Google.Api.Gax.Rest/4.13.1": {
+      "Google.Api.Gax.Rest/4.15.2": {
         "type": "package",
         "dependencies": {
-          "Google.Api.Gax": "4.13.1",
-          "Google.Apis.Auth": "1.73.0",
+          "Google.Api.Gax": "4.15.2",
+          "Google.Apis.Auth": "1.77.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
         },
         "compile": {
@@ -69,10 +69,10 @@
           }
         }
       },
-      "Google.Apis/1.73.0": {
+      "Google.Apis/1.77.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis.Core": "1.73.0"
+          "Google.Apis.Core": "1.77.0"
         },
         "compile": {
           "lib/net6.0/Google.Apis.dll": {
@@ -85,11 +85,11 @@
           }
         }
       },
-      "Google.Apis.Auth/1.73.0": {
+      "Google.Apis.Auth/1.77.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis": "1.73.0",
-          "Google.Apis.Core": "1.73.0",
+          "Google.Apis": "1.77.0",
+          "Google.Apis.Core": "1.77.0",
           "System.Management": "7.0.2"
         },
         "compile": {
@@ -103,7 +103,7 @@
           }
         }
       },
-      "Google.Apis.Core/1.73.0": {
+      "Google.Apis.Core/1.77.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.4"
@@ -1205,7 +1205,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "System.Collections.Immutable/8.0.0": {
+      "System.Collections.Immutable/10.0.14": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Collections.Immutable.dll": {
@@ -1218,7 +1218,7 @@
           }
         },
         "build": {
-          "buildTransitive/net6.0/_._": {}
+          "buildTransitive/net8.0/_._": {}
         }
       },
       "System.Composition/6.0.0": {
@@ -1512,15 +1512,15 @@
         "lib/netstandard2.0/Dapper.xml"
       ]
     },
-    "FirebaseAdmin/3.7.0": {
-      "sha512": "9XRXSMGmEBarZm1ojMDqRUDUvWGKwDiJh52D19TqUDOdNu43ZMnGg5k8Az6A758rZu5rV7qo2sLofH0J+OEcyg==",
+    "FirebaseAdmin/3.7.1": {
+      "sha512": "1RjzXmZ44JhrQsdLLo3DoRj7h8eACEvAIoGpslYRG94lp3SFojzFPcUhqbeR7+uS69ADlR4hKkGmK+ApoJSRRA==",
       "type": "package",
-      "path": "firebaseadmin/3.7.0",
+      "path": "firebaseadmin/3.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "firebaseadmin.3.7.0.nupkg.sha512",
+        "firebaseadmin.3.7.1.nupkg.sha512",
         "firebaseadmin.nuspec",
         "lib/net462/FirebaseAdmin.dll",
         "lib/net462/FirebaseAdmin.xml",
@@ -1530,16 +1530,16 @@
         "lib/netstandard2.0/FirebaseAdmin.xml"
       ]
     },
-    "Google.Api.Gax/4.13.1": {
-      "sha512": "ujDpZk7O2VqAEIqcSlhH0FKzVpGZWly/qcNjHxpNUrL445Tei9PHnu4V1pwW2WDiMDvo3TpL1Bi4DeU525Afrg==",
+    "Google.Api.Gax/4.15.2": {
+      "sha512": "KsA52zqUo9M5wfVmUILa2D73r29ga0Zgzw9AUncEGNqrTrkOjE71a0vJDNNHSw7grhef4YfHmHJc8V4aMOSzSw==",
       "type": "package",
-      "path": "google.api.gax/4.13.1",
+      "path": "google.api.gax/4.15.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.api.gax.4.13.1.nupkg.sha512",
+        "google.api.gax.4.15.2.nupkg.sha512",
         "google.api.gax.nuspec",
         "lib/net462/Google.Api.Gax.dll",
         "lib/net462/Google.Api.Gax.pdb",
@@ -1549,16 +1549,16 @@
         "lib/netstandard2.0/Google.Api.Gax.xml"
       ]
     },
-    "Google.Api.Gax.Rest/4.13.1": {
-      "sha512": "wDfFZXKoHC6sy+Yfub/4cLQOb5ozBVPqDOrxCUAeTfku4d96ILqgzulJSdkPHbiT3oWB3hlYTdJgUwNSJjyo+A==",
+    "Google.Api.Gax.Rest/4.15.2": {
+      "sha512": "aKJt5A0Y+5YU8YU2rD8olT/sfWagN6EgocvB6zV56wlNGKmNoq1pHhvuB8Gcbu1mxDH0exdyyR2kmbumBfxaFA==",
       "type": "package",
-      "path": "google.api.gax.rest/4.13.1",
+      "path": "google.api.gax.rest/4.15.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.api.gax.rest.4.13.1.nupkg.sha512",
+        "google.api.gax.rest.4.15.2.nupkg.sha512",
         "google.api.gax.rest.nuspec",
         "lib/net462/Google.Api.Gax.Rest.dll",
         "lib/net462/Google.Api.Gax.Rest.pdb",
@@ -1568,16 +1568,16 @@
         "lib/netstandard2.0/Google.Api.Gax.Rest.xml"
       ]
     },
-    "Google.Apis/1.73.0": {
-      "sha512": "TnCjEyV2aCLQ6Zl40OCbEJULDuEkEWc6C/g81KYw5l1PqGo+G7pFZrV+YH8XgUL0JRUanz+IrUp8SsKF4dzkqg==",
+    "Google.Apis/1.77.0": {
+      "sha512": "zj7MKdZz7lWRM7z2meqh5S9KSf83c1xY8Fa+b1KzYxw9xMugUxcQtwPoxJgFzxKJgLE64dAra0ze++P/Up4k6Q==",
       "type": "package",
-      "path": "google.apis/1.73.0",
+      "path": "google.apis/1.77.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.1.73.0.nupkg.sha512",
+        "google.apis.1.77.0.nupkg.sha512",
         "google.apis.nuspec",
         "lib/net462/Google.Apis.dll",
         "lib/net462/Google.Apis.pdb",
@@ -1590,16 +1590,16 @@
         "lib/netstandard2.0/Google.Apis.xml"
       ]
     },
-    "Google.Apis.Auth/1.73.0": {
-      "sha512": "wEu12uhnRv3zrPBSqv4E2vPH6lYLtc1RPAnU9MJRCMFlBVwZ7Lnq3NfbYXi6VG7EurkYInTaMpeBZkbM/HrAog==",
+    "Google.Apis.Auth/1.77.0": {
+      "sha512": "lcgXlzM+JkX0nKKc7KBwTdiei2IbV20PuTe3cVQ2zOhq0j4IiS9I4xlRQY4igdCMLlmobthz5xtHiPr/wxl0Ew==",
       "type": "package",
-      "path": "google.apis.auth/1.73.0",
+      "path": "google.apis.auth/1.77.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.auth.1.73.0.nupkg.sha512",
+        "google.apis.auth.1.77.0.nupkg.sha512",
         "google.apis.auth.nuspec",
         "lib/net462/Google.Apis.Auth.dll",
         "lib/net462/Google.Apis.Auth.pdb",
@@ -1612,16 +1612,16 @@
         "lib/netstandard2.0/Google.Apis.Auth.xml"
       ]
     },
-    "Google.Apis.Core/1.73.0": {
-      "sha512": "vSc7CY4KCP7HE4QTElDx/ExnGLbg9kXb89MS6cdvI+0D4sxvTYb16vGtXmF2jSDMV3iDmykSXdIUPTz8TDS6gg==",
+    "Google.Apis.Core/1.77.0": {
+      "sha512": "7Yj4dpbOLFbxct6x5AFHQEZ25E8/f+5zqW39Q8f/GZknLyuS+uhnt2DIcKQplBNJTK9WNXompbYLWsPRhO6Nmg==",
       "type": "package",
-      "path": "google.apis.core/1.73.0",
+      "path": "google.apis.core/1.77.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.core.1.73.0.nupkg.sha512",
+        "google.apis.core.1.77.0.nupkg.sha512",
         "google.apis.core.nuspec",
         "lib/net462/Google.Apis.Core.dll",
         "lib/net462/Google.Apis.Core.pdb",
@@ -3519,32 +3519,31 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Collections.Immutable/8.0.0": {
-      "sha512": "AurL6Y5BA1WotzlEvVaIDpqzpIPvYnnldxru8oXJU2yFxFUy3+pNXjXd1ymO+RA0rq0+590Q8gaz2l3Sr7fmqg==",
+    "System.Collections.Immutable/10.0.14": {
+      "sha512": "7kqcjP+kmcr4zaPDi+VjaImd8ESFGGPYbr9wJo5ddRrtX9JQ9p2DJlUBBvdjJmeC0KBZxYi6L5UIKcXlaq/FDw==",
       "type": "package",
-      "path": "system.collections.immutable/8.0.0",
+      "path": "system.collections.immutable/10.0.14",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "LICENSE.TXT",
         "PACKAGE.md",
         "THIRD-PARTY-NOTICES.TXT",
         "buildTransitive/net461/System.Collections.Immutable.targets",
         "buildTransitive/net462/_._",
-        "buildTransitive/net6.0/_._",
+        "buildTransitive/net8.0/_._",
         "buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets",
+        "lib/net10.0/System.Collections.Immutable.dll",
+        "lib/net10.0/System.Collections.Immutable.xml",
         "lib/net462/System.Collections.Immutable.dll",
         "lib/net462/System.Collections.Immutable.xml",
-        "lib/net6.0/System.Collections.Immutable.dll",
-        "lib/net6.0/System.Collections.Immutable.xml",
-        "lib/net7.0/System.Collections.Immutable.dll",
-        "lib/net7.0/System.Collections.Immutable.xml",
         "lib/net8.0/System.Collections.Immutable.dll",
         "lib/net8.0/System.Collections.Immutable.xml",
+        "lib/net9.0/System.Collections.Immutable.dll",
+        "lib/net9.0/System.Collections.Immutable.xml",
         "lib/netstandard2.0/System.Collections.Immutable.dll",
         "lib/netstandard2.0/System.Collections.Immutable.xml",
-        "system.collections.immutable.8.0.0.nupkg.sha512",
+        "system.collections.immutable.10.0.14.nupkg.sha512",
         "system.collections.immutable.nuspec",
         "useSharedDesignerContext.txt"
       ]

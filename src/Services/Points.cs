@@ -12,10 +12,16 @@ public static class PointsRules
     public const int MonthlyFreeAds = 2;    // رصيد مجاني بيتجدد كل شهر (لحد 2، من غير تراكم)
     public const int MissPenalty = 2;       // خصم عدم الرد لحد ما الطلب ينتهي
     public const int MaxAdDays = 3;         // أقصى مدة للإعلان
+    public const double AdRadiusKm = 10;    // الإعلان بيظهر بس للمستخدمين في نطاق 10 كم من الصيدلية
 
     /// أول 5 دقايق = 3 نقاط، من 5 لـ 10 = 2، بعد كده = 1
     public static int ForReply(TimeSpan elapsed) =>
         elapsed < TimeSpan.FromMinutes(5) ? 3 : elapsed < TimeSpan.FromMinutes(10) ? 2 : 1;
+
+    /// الطلبات اللي اتعملت من 12 منتصف الليل لحد 9 الصبح (بتوقيت القاهرة) مافيهاش خصم عدم رد
+    public const int NoPenaltyUntilHour = 9;
+    public static bool IsNoPenaltyTime(DateTime createdUtc) =>
+        TimeZoneInfo.ConvertTimeFromUtc(createdUtc, Cairo).Hour < NoPenaltyUntilHour;
 
     private static TimeZoneInfo Cairo => TimeZoneInfo.FindSystemTimeZoneById("Africa/Cairo");
 

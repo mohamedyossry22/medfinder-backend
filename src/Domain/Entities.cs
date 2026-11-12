@@ -99,8 +99,9 @@ public class DrugRequest
     public double Lng { get; set; }
     public double RadiusKm { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public DateTime ExpiresAt { get; set; }
-    public bool ExpiryHandled { get; set; }
+    public DateTime ReplyDeadline { get; set; }     // آخر وقت لرد الصيدليات (120 دقيقة من الإنشاء)
+    public DateTime ExpiresAt { get; set; }         // نهاية الطلب بالكامل (فترة الاستلام والتسليم: 6 ساعات)
+    public bool ExpiryHandled { get; set; }         // اتعالجت نهاية مهلة الرد (خصم عدم الرد + إشعار "مالقيناش")
     public DateTime? ClosedAt { get; set; }        // المستخدم أكد الاستلام: الطلب اتقفل
     public Guid? DeliveredTargetId { get; set; }   // الصيدلية اللي سلّمت
     public List<RequestTarget> Targets { get; set; } = new();

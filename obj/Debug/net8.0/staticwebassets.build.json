@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qKsyqA5iOKDebRm1cygHx0pHn8lcfnoAY903wXKazg8=",
+  "Hash": "c/bxiUFTOVFOlMbRE9fdpafAIsv+JjnSR5Q8YIZiGyc=",
   "Source": "MedFinder",
   "BasePath": "_content/MedFinder",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\843506bb5f024c458e5a7e88c7a1616a.jpg",
+      "SourceId": "MedFinder",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\",
+      "BasePath": "_content/MedFinder",
+      "RelativePath": "uploads/ads/843506bb5f024c458e5a7e88c7a1616a.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ads\\843506bb5f024c458e5a7e88c7a1616a.jpg"
+    },
     {
       "Identity": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\b27baf56ba1c46c4b76d64c9a6ac912c.jpg",
       "SourceId": "MedFinder",
@@ -34,6 +53,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\ads\\b27baf56ba1c46c4b76d64c9a6ac912c.jpg"
+    },
+    {
+      "Identity": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\e3bbd38924b74df18d41b9aa8dbd5877.webp",
+      "SourceId": "MedFinder",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\",
+      "BasePath": "_content/MedFinder",
+      "RelativePath": "uploads/ads/e3bbd38924b74df18d41b9aa8dbd5877.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ads\\e3bbd38924b74df18d41b9aa8dbd5877.webp"
+    },
+    {
+      "Identity": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\ebfb69d9136d4492b6c6c49bacdbbbc3.png",
+      "SourceId": "MedFinder",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\",
+      "BasePath": "_content/MedFinder",
+      "RelativePath": "uploads/ads/ebfb69d9136d4492b6c6c49bacdbbbc3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ads\\ebfb69d9136d4492b6c6c49bacdbbbc3.png"
     },
     {
       "Identity": "E:\\Yossry\\pharma-app\\github\\medfinder-backend\\wwwroot\\uploads\\ads\\fe183c947d5e4cf284b43e761dae5547.jpg",

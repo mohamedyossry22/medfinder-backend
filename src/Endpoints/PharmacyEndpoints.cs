@@ -120,10 +120,10 @@ public static class PharmacyEndpoints
             var ph = await ApprovedAsync(me, db); if (ph == null) return NotApproved();
             var now = DateTime.UtcNow;
             var rows = await db.RequestTargets.AsNoTracking()
-                .Where(t => t.PharmacyId == ph.Id && t.Status == TargetStatus.Pending && t.Request.ExpiresAt > now && t.Request.ClosedAt == null)
+                .Where(t => t.PharmacyId == ph.Id && t.Status == TargetStatus.Pending && t.Request.ReplyDeadline > now && t.Request.ClosedAt == null)
                 .OrderByDescending(t => t.Request.CreatedAt)
                 .Select(t => new IncomingRequestDto(t.Id, t.RequestId, t.Request.Drug.NameEn, t.Request.Drug.NameAr,
-                    t.Request.Drug.ActiveIngredient, t.Request.Quantity, t.DistanceKm, t.Request.CreatedAt, t.Request.ExpiresAt))
+                    t.Request.Drug.ActiveIngredient, t.Request.Quantity, t.DistanceKm, t.Request.CreatedAt, t.Request.ReplyDeadline))   // ExpiresAt = آخر وقت للرد
                 .ToListAsync();
             return Results.Ok(rows);
         });
@@ -137,7 +137,7 @@ public static class PharmacyEndpoints
                 {
                     x.Id, x.RequestId, DrugNameEn = x.Request.Drug.NameEn, DrugNameAr = x.Request.Drug.NameAr,
                     x.Request.Drug.ActiveIngredient, x.Request.Drug.Manufacturer, x.Request.Drug.Route,
-                    x.Request.Quantity, x.DistanceKm, x.Status, x.AvailableQty, x.Request.CreatedAt, x.Request.ExpiresAt
+                    x.Request.Quantity, x.DistanceKm, x.Status, x.AvailableQty, x.Request.CreatedAt, x.Request.ExpiresAt, x.Request.ReplyDeadline
                 }).FirstOrDefaultAsync();
             return t == null ? Results.NotFound() : Results.Ok(t);
         });
@@ -155,6 +155,8 @@ public static class PharmacyEndpoints
             if (t == null) return Results.NotFound();
             if (t.Request.ClosedAt != null) return Results.Json(new { error = "closed" }, statusCode: 410);
             if (t.Request.ExpiresAt <= DateTime.UtcNow) return Results.Json(new { error = "expired" }, statusCode: 410);
+            // أول رد لازم يكون جوه مهلة الرد (120 دقيقة). تعديل رد قديم متاح لحد نهاية الطلب.
+            if (t.RespondedAt == null && t.Request.ReplyDeadline <= DateTime.UtcNow) return Results.Json(new { error = "expired" }, statusCode: 410);
             if (t.Status is TargetStatus.Delivered or TargetStatus.Expired or TargetStatus.Cancelled)
                 return Results.Json(new { error = "locked" }, statusCode: 409);
 
@@ -241,7 +243,7 @@ public static class PharmacyEndpoints
             var b = await points.GetBalanceAsync(ph.Id);
             return Results.Ok(new
             {
-                b.FreeAds, b.FreeAdsMax, b.Points, b.PointsPerAd, b.AdsFromPoints, b.MaxAdDays, b.RenewsAt,
+                b.FreeAds, b.FreeAdsMax, b.Points, b.PointsPerAd, b.AdsFromPoints, b.MaxAdDays, b.RenewsAt, AdRadiusKm = PointsRules.AdRadiusKm,
                 History = await points.HistoryAsync(ph.Id)
             });
         });
@@ -317,17 +319,46 @@ public static class PharmacyEndpoints
         });
     }
 
+    /// إعلان معتمد، وقته شغال، وصيدليته معتمدة
+    private static IQueryable<Ad> ActiveAds(AppDbContext db, DateTime now) =>
+        db.Ads.AsNoTracking().Where(a => a.Status == AdStatus.Approved && a.StartDate <= now && a.EndDate > now && a.Pharmacy.Status == PharmacyStatus.Approved);
+
     /// إعلانات الصفحة الرئيسية للموبايل + تسجيل أجهزة الإشعارات
     public static void MapSharedEndpoints(this WebApplication app)
     {
-        app.MapGet("/api/ads", async (AppDbContext db) =>
+        // الإعلانات القريبة: الأحدث الأول، وبس اللي صيدليتها في نطاق 10 كم من موقع المستخدم (lat/lng).
+        // الرئيسية بتجيب آخر 5 (take=5)، وصفحة الإعلانات بتكمّل بـ skip/take. من غير موقع: مفيش إعلانات.
+        app.MapGet("/api/ads", async (AppDbContext db, double? lat, double? lng, int? take, int? skip) =>
         {
-            var now = DateTime.UtcNow;
-            var rows = await db.Ads.AsNoTracking()
-                .Where(a => a.Status == AdStatus.Approved && a.StartDate <= now && a.EndDate > now && a.Pharmacy.Status == PharmacyStatus.Approved)
-                .Select(a => new { a.Id, a.Title, a.ImagePath, a.LinkUrl, PharmacyName = a.Pharmacy.Name })
-                .ToListAsync();
-            return rows.OrderBy(_ => Random.Shared.Next()).Take(10);
+            if (lat is not double la || lng is not double ln || !Geo.InEgypt(la, ln)) return Results.Ok(Array.Empty<object>());
+            var (minLat, maxLat, minLng, maxLng) = Geo.BBox(la, ln, PointsRules.AdRadiusKm);
+
+            // تصفية سريعة بالمربع في الداتابيز، وبعدين المسافة الدقيقة هنا
+            var rows = await ActiveAds(db, DateTime.UtcNow)
+                .Where(a => a.Pharmacy.Lat >= minLat && a.Pharmacy.Lat <= maxLat && a.Pharmacy.Lng >= minLng && a.Pharmacy.Lng <= maxLng)
+                .OrderByDescending(a => a.StartDate).ThenByDescending(a => a.CreatedAt).ThenBy(a => a.Id)
+                .Select(a => new { a.Id, a.Title, a.ImagePath, a.LinkUrl, a.EndDate, PharmacyName = a.Pharmacy.Name, a.Pharmacy.Lat, a.Pharmacy.Lng })
+                .Take(500).ToListAsync();
+
+            var page = rows.Where(r => Geo.DistanceKm(la, ln, r.Lat, r.Lng) <= PointsRules.AdRadiusKm)
+                .Skip(Math.Max(0, skip ?? 0)).Take(Math.Clamp(take ?? 5, 1, 50))
+                .Select(r => new { r.Id, r.Title, r.ImagePath, r.LinkUrl, r.EndDate, r.PharmacyName })
+                .ToList();
+            return Results.Ok(page);
+        }).RequireAuthorization().WithTags("Ads");
+
+        // تفاصيل إعلان جاري (جوه نطاق 10 كم بس): بيانات الصيدلية (اسم، رقم، عنوان، لوكيشن) بتتعرض مع الإعلان
+        app.MapGet("/api/ads/{id:guid}", async (Guid id, AppDbContext db, double? lat, double? lng) =>
+        {
+            if (lat is not double la || lng is not double ln) return Results.BadRequest(new { error = "location_required" });
+            var ad = await ActiveAds(db, DateTime.UtcNow).Where(a => a.Id == id)
+                .Select(a => new
+                {
+                    a.Id, a.Title, a.ImagePath, a.LinkUrl, a.StartDate, a.EndDate,
+                    Pharmacy = new { a.Pharmacy.Name, a.Pharmacy.Phone, a.Pharmacy.Address, a.Pharmacy.Governorate, a.Pharmacy.Lat, a.Pharmacy.Lng, a.Pharmacy.MapsUrl }
+                }).FirstOrDefaultAsync();
+            if (ad == null || Geo.DistanceKm(la, ln, ad.Pharmacy.Lat, ad.Pharmacy.Lng) > PointsRules.AdRadiusKm) return Results.NotFound();
+            return Results.Ok(ad);
         }).RequireAuthorization().WithTags("Ads");
 
         var d = app.MapGroup("/api/devices").WithTags("Devices").RequireAuthorization();
